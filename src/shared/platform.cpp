@@ -125,31 +125,31 @@ void UpdateTimestamps(const std::filesystem::path& path, const cd::ISO_DATESTAMP
 #endif
 }
 
-extern int Main(int argc, char* argv[]);
-
-#ifdef _WIN32
-int wmain(int argc, wchar_t* argv[])
-{
-	std::vector<std::string> u8Arguments;
-	u8Arguments.reserve(argc);
-	for (int i = 0; i < argc; ++i)
-	{
-		u8Arguments.emplace_back(UTF16ToUTF8(argv[i]));
-	}
-
-	std::vector<char*> u8argv;
-	u8Arguments.reserve(argc + 1);
-	for (std::string& str : u8Arguments)
-	{
-		u8argv.emplace_back(str.data());
-	}
-	u8argv.emplace_back(nullptr);
-
-	return Main(argc, u8argv.data());
-}
-#else
-int main(int argc, char* argv[])
-{
-	return Main(argc, argv);
-}
-#endif
+//extern int Main(int argc, char* argv[]);
+//
+//#ifdef _WIN32
+//int wmain(int argc, wchar_t* argv[])
+//{
+//	std::vector<std::string> u8Arguments;
+//	u8Arguments.reserve(argc);
+//	for (int i = 0; i < argc; ++i)
+//	{
+//		u8Arguments.emplace_back(UTF16ToUTF8(argv[i]));
+//	}
+//
+//	std::vector<char*> u8argv;
+//	u8Arguments.reserve(argc + 1);
+//	for (std::string& str : u8Arguments)
+//	{
+//		u8argv.emplace_back(str.data());
+//	}
+//	u8argv.emplace_back(nullptr);
+//
+//	return Main(argc, u8argv.data());
+//}
+//#else
+//int main(int argc, char* argv[])
+//{
+//	return Main(argc, argv);
+//}
+//#endif

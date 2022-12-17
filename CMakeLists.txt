@@ -71,11 +71,11 @@ find_package(Threads REQUIRED)
 
 ## Executables
 
-add_executable(mkpsxiso
+add_library(mkpsxiso
 	${mkpsxiso_dir}/cdwriter.cpp
 	${mkpsxiso_dir}/edcecc.cpp
 	${mkpsxiso_dir}/iso.cpp
-	${mkpsxiso_dir}/main.cpp
+	${mkpsxiso_dir}/mkpsxiso.cpp
 )
 target_include_directories(mkpsxiso PUBLIC "miniaudio")
 target_link_libraries(mkpsxiso tinyxml2 iso_shared Threads::Threads)
@@ -83,9 +83,9 @@ if(MINGW)
 	target_link_libraries(mkpsxiso "-municode")
 endif()
 
-add_executable(dumpsxiso
+add_library(dumpsxiso
 	${dumpsxiso_dir}/cdreader.cpp
-	${dumpsxiso_dir}/main.cpp
+	${dumpsxiso_dir}/dumpsxiso.cpp
 )
 target_link_libraries(dumpsxiso tinyxml2 iso_shared)
 if(NOT MKPSXISO_NO_LIBFLAC)
