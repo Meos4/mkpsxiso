@@ -444,7 +444,7 @@ int _mkpsxiso(int argc, char* argv[])
 
 		if ( !global::NoIsoGen )
 		{
-			if ( false )
+			if ( global::cuefile )
 			{
 				if ( global::cuefile->empty() )
 				{
